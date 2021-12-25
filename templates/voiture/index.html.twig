@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Voiture index{% endblock %}
+
+{% block body %}
+    <h1>Les voitures</h1>
+
+        <a href="{{ path('voiture_new') }}" class="btn btn-link">Ajouter une nouvelle voiture</a>
+
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Num</th>
+                <th>Nom</th>
+                <th>Matricule</th>
+                <th>Description</th>
+                <th>Photo</th>
+                <th>Prix</th>
+                <th>Modele</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for voiture in voitures %}
+            <tr>
+                <td>{{ voiture.id }}</td>
+                <td>{{ voiture.nom }}</td>
+                <td>{{ voiture.matricule }}</td>
+                <td>{{ voiture.description }}</td>
+                <td>{{ voiture.photo }}</td>
+                <td>{{ voiture.prix }}</td>
+                <td>{{ voiture.modele }}</td>
+                <td class="d-flex">
+                    <a href="{{ path('voiture_show', {'id': voiture.id}) }}" class="btn btn-primary" ><i class="far fa-eye"></i></i></a>
+                    <a href="{{ path('voiture_edit', {'id': voiture.id}) }}" class="btn btn-success"><i class="nav-icon fas fa-edit"></i></a>
+                    <a>{{ include('voiture/_delete_form.html.twig') }}</a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

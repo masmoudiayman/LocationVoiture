@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reservation index{% endblock %}
+
+{% block body %}
+    <h1>Les réservation </h1>
+        <a href="{{ path('reservation_new') }}" class="btn btn-link">Ajouter une nouvelle réservation</a>
+
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Num</th>
+                <th>Date de début</th>
+                <th>Date de fin</th>
+                <th>Prix par jour</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reservation in reservations %}
+            <tr>
+                <td>{{ reservation.id }}</td>
+                <td>{{ reservation.dateDebut ? reservation.dateDebut|date('Y-m-d') : '' }}</td>
+                <td>{{ reservation.dateFin ? reservation.dateFin|date('Y-m-d') : '' }}</td>
+                <td>{{ reservation.prixParJour }}</td>
+                <td class="d-flex">
+                    <a href="{{ path('reservation_show', {'id': reservation.id}) }}" class="btn btn-primary" ><i class="far fa-eye"></i></i></a>
+                    <a href="{{ path('reservation_edit', {'id': reservation.id}) }}" class="btn btn-success"><i class="nav-icon fas fa-edit"></i></a>
+                    <a>{{ include('reservation/_delete_form.html.twig') }}</a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

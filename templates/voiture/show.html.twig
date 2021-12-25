@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Voiture{% endblock %}
+
+{% block body %}
+    <h1>Voiture</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ voiture.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ voiture.nom }}</td>
+            </tr>
+            <tr>
+                <th>Matricule</th>
+                <td>{{ voiture.matricule }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ voiture.description }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td>{{ voiture.photo }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ voiture.prix }}</td>
+            </tr>
+            <tr>
+                <th>Modele</th>
+                <td>{{ voiture.modele }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('voiture_index') }}" class="btn btn-link">Retourner à la liste des voitures</a>
+
+
+{% endblock %}

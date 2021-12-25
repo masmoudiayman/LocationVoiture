@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Client index{% endblock %}
+
+{% block body %}
+
+    <h1> Les clients </h1>
+    <a href="{{ path('client_new') }}" class="btn btn-link">Ajouter un nouveau client</a>
+
+    <table  class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Num</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Téléphone</th>
+                <th>Email</th>
+                <th>Adresse</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for client in clients %}
+            <tr>
+                <td>{{ client.id }}</td>
+                <td>{{ client.nom }}</td>
+                <td>{{ client.prenom }}</td>
+                <td>{{ client.tel }}</td>
+                <td>{{ client.email }}</td>
+                <td>{{ client.adresse }}</td>
+                <td class="d-flex">
+                    <a href="{{ path('client_show', {'id': client.id}) }}" class="btn btn-primary" ><i class="far fa-eye"></i></i></a>
+                    <a href="{{ path('client_edit', {'id': client.id}) }}" class="btn btn-success"><i class="nav-icon fas fa-edit"></i></a>
+                    <a>{{ include('client/_delete_form.html.twig') }}</a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

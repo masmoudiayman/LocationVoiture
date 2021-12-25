@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{% block title %}Edit Reservation{% endblock %}
+
+{% block body %}
+    <h1>Modifier une réservation</h1>
+
+    {{ include('reservation/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+
+{% endblock %}
