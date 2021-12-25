@@ -12,14 +12,14 @@
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th>Num</th>
+                <th>Numéro</th>
                 <th>Nom</th>
                 <th>Matricule</th>
                 <th>Description</th>
                 <th>Photo</th>
                 <th>Prix</th>
-                <th>Modele</th>
-                <th>actions</th>
+                <th>Modéle</th>
+                <th>Les actions</th>
             </tr>
         </thead>
         <tbody>
@@ -29,7 +29,7 @@
                 <td>{{ voiture.nom }}</td>
                 <td>{{ voiture.matricule }}</td>
                 <td>{{ voiture.description }}</td>
-                <td>{{ voiture.photo }}</td>
+                <td> <img src="{{ asset('uploads/' ~ voiture.photo) }}"style ="width:80px;height=80px"></td>
                 <td>{{ voiture.prix }}</td>
                 <td>{{ voiture.modele }}</td>
                 <td class="d-flex">
@@ -41,7 +41,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="8">no records found</td>
+                <td colspan="8">Aucun enregistrement trouvé</td>
             </tr>
         {% endfor %}
         </tbody>

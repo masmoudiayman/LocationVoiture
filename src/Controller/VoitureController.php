@@ -10,6 +10,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+
+
 
 #[Route('/voiture')]
 class VoitureController extends AbstractController
@@ -23,21 +27,35 @@ class VoitureController extends AbstractController
     }
 
     #[Route('/new', name: 'voiture_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, SluggerInterface $slugger)
     {
         $voiture = new Voiture();
         $form = $this->createForm(VoitureType::class, $voiture);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($voiture);
-            $entityManager->flush();
+            $file =$form->get('photo')->getData();
+            if($file){
+                $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$file->guessExtension();
+           
+                try{
+                    $file->move(
+                        $this->getParameter('uploads_directory'),
+                        $newFilename
+                );
+               }catch (FileException $e){
 
-            return $this->redirectToRoute('voiture_index', [], Response::HTTP_SEE_OTHER);
+               }  
+               $voiture->setPhoto($newFilename);
+            }     
+
+            
+            return $this->redirectToRoute('voiture_index');
         }
 
         return $this->renderForm('voiture/new.html.twig', [
-            'voiture' => $voiture,
             'form' => $form,
         ]);
     }

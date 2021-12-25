@@ -56,6 +56,21 @@
                 Interface
             </div>
 
+               <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                    aria-expanded="true" aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Réservation</span>
+                </a>
+                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{ path('reservation_new') }}">Ajouter une réservation</a>
+                        <a class="collapse-item" href="{{ path('reservation_index') }}">Les réservation</a>
+                    </div>
+                </div>
+            </li>
+
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
@@ -65,8 +80,8 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="buttons.html">Ajouter client</a>
-                        <a class="collapse-item" href="cards.html">Les client</a>
+                        <a class="collapse-item" href="{{ path('client_new') }}">Ajouter client</a>
+                        <a class="collapse-item" href="{{ path('client_index') }}">Les client</a>
                     </div>
                 </div>
             </li>
@@ -80,27 +95,15 @@
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
+
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="utilities-color.html">Ajouter Voiture</a>
-                        <a class="collapse-item" href="utilities-border.html">Les voitures</a>
+                        <a class="collapse-item" href="{{ path('voiture_new') }}">Ajouter Voiture</a>
+                        <a class="collapse-item" href="{{ path('voiture_index') }}">Les voitures</a>
                     </div>
                 </div>
             </li>
 
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Réservation</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="login.html">Ajouter une réservation</a>
-                        <a class="collapse-item" href="register.html">Les réservation</a>
-                    </div>
-                </div>
-            </li>
+         
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

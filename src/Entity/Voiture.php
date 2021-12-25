@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\VoitureRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: VoitureRepository::class)]
@@ -30,6 +32,17 @@ class Voiture
 
     #[ORM\Column(type: 'string', length: 255)]
     private $modele;
+
+    #[ORM\OneToMany(mappedBy: 'pk_voiture', targetEntity: Reservation::class)]
+    private $reservations;
+
+ 
+
+
+    public function __construct()
+    {
+        $this->reservations = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -72,12 +85,12 @@ class Voiture
         return $this;
     }
 
-    public function getPhoto(): ?string
+    public function getPhoto()
     {
         return $this->photo;
     }
 
-    public function setPhoto(string $photo): self
+    public function setPhoto( $photo)
     {
         $this->photo = $photo;
 
@@ -107,4 +120,36 @@ class Voiture
 
         return $this;
     }
+
+    /**
+     * @return Collection|Reservation[]
+     */
+    public function getReservations(): Collection
+    {
+        return $this->reservations;
+    }
+
+    public function addReservation(Reservation $reservation): self
+    {
+        if (!$this->reservations->contains($reservation)) {
+            $this->reservations[] = $reservation;
+            $reservation->setPkVoiture($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReservation(Reservation $reservation): self
+    {
+        if ($this->reservations->removeElement($reservation)) {
+            // set the owning side to null (unless already changed)
+            if ($reservation->getPkVoiture() === $this) {
+                $reservation->setPkVoiture(null);
+            }
+        }
+
+        return $this;
+    }
+
+   
 }

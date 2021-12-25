@@ -3,20 +3,28 @@
 {% block title %}Reservation{% endblock %}
 
 {% block body %}
-    <h1>Reservation</h1>
+    <h1>Détails réservation</h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Num</th>
+                <th>Numéro du réservation</th>
                 <td>{{ reservation.id }}</td>
             </tr>
             <tr>
-                <th>Date_debut</th>
-                <td >{{ reservation.dateDebut ? reservation.dateDebut|date('Y-m-d') : '' }}</td>
+                <th>Client</th>
+                <td>{{ reservation.getPkClient().nom }}</td>
             </tr>
             <tr>
-                <th>Date_fin</th>
+                <th>Voiture</th>
+                <td>{{ reservation.getPkVoiture().matricule }}</td>
+            </tr>
+            <tr>
+                <th>Date de début</th>
+                <td>{{ reservation.dateDebut ? reservation.dateDebut|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date de fin</th>
                 <td>{{ reservation.dateFin ? reservation.dateFin|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
@@ -26,7 +34,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('reservation_index') }}" class="btn btn-link">Retourner à la liste des réservations</a>
+    <a href="{{ path('reservation_index') }}"class="btn btn-link">Retourner à la liste des réservations</a>
 
 
 {% endblock %}
