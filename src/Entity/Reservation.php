@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ReservationRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\Cascade;
 
 #[ORM\Entity(repositoryClass: ReservationRepository::class)]
 class Reservation
@@ -23,9 +24,11 @@ class Reservation
     private $prix_par_jour;
 
     #[ORM\ManyToOne(targetEntity: Client::class, inversedBy: 'reservations')]
+    #[ORM\JoinColumn(onDelete:"CASCADE")]
     private $pk_client;
 
     #[ORM\ManyToOne(targetEntity: Voiture::class, inversedBy: 'reservations')]
+    #[ORM\JoinColumn(onDelete:"CASCADE")]
     private $pk_voiture;
 
     public function getId(): ?int

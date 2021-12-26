@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Doctrine\Persistence\ManagerRegistry;
 
 
 
@@ -27,7 +28,7 @@ class VoitureController extends AbstractController
     }
 
     #[Route('/new', name: 'voiture_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, SluggerInterface $slugger)
+    public function new(Request $request, SluggerInterface $slugger, ManagerRegistry $doctrine)
     {
         $voiture = new Voiture();
         $form = $this->createForm(VoitureType::class, $voiture);
@@ -47,18 +48,23 @@ class VoitureController extends AbstractController
                 );
                }catch (FileException $e){
 
-               }  
+               } 
+               $entityManager =$doctrine->getManager();
                $voiture->setPhoto($newFilename);
-            }     
-
-            
-            return $this->redirectToRoute('voiture_index');
+               $entityManager->persist($voiture);
+               $entityManager->flush();
+                    
+            return $this->redirectToRoute('voiture_index', [], Response::HTTP_SEE_OTHER);
         }
+    }
 
         return $this->renderForm('voiture/new.html.twig', [
+            'voiture' => $voiture,
             'form' => $form,
         ]);
+    
     }
+
 
     #[Route('/{id}', name: 'voiture_show', methods: ['GET'])]
     public function show(Voiture $voiture): Response
