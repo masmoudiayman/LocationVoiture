@@ -245,8 +245,9 @@ optgroup,
 textarea {
   margin: 0;
   font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
 }
 
 button,
@@ -1907,6 +1908,7 @@ input[type="month"].form-control {
 select.form-control:focus::-ms-value {
   color: #6e707e;
   background-color: #fff;
+  
 }
 
 .form-control-file,
@@ -2283,6 +2285,7 @@ textarea.form-control {
   .form-inline .input-group,
   .form-inline .custom-select {
     width: auto;
+    
   }
   .form-inline .form-check {
     display: flex;

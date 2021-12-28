@@ -10,6 +10,10 @@
     <meta name="author" content="">
 
     <title>SB Admin 2 - Dashboard</title>
+    {% block stylesheets %}
+    {% endblock %}
+
+
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -31,11 +35,11 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" >
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                 <i class="fa fa-car" style="font-size:60px;color:black;"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">Location Voiture <sup>2</sup></div>
             </a>
 
             <!-- Divider -->
@@ -66,7 +70,7 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="{{ path('reservation_new') }}">Ajouter une réservation</a>
-                        <a class="collapse-item" href="{{ path('reservation_index') }}">Les réservation</a>
+                        <a class="collapse-item" href="{{ path('reservation_index') }}">Les réservations</a>
                     </div>
                 </div>
             </li>
@@ -75,13 +79,13 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
+                    <i class="fa fa-fw fa-user"></i>
                     <span>Client</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{ path('client_new') }}">Ajouter client</a>
-                        <a class="collapse-item" href="{{ path('client_index') }}">Les client</a>
+                        <a class="collapse-item" href="{{ path('client_new') }}">Ajouter un client</a>
+                        <a class="collapse-item" href="{{ path('client_index') }}">Les clients</a>
                     </div>
                 </div>
             </li>
@@ -90,14 +94,14 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
+                    <i class="fa fa-car"></i>
                     <span>Voiture</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
 
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{ path('voiture_new') }}">Ajouter Voiture</a>
+                        <a class="collapse-item" href="{{ path('voiture_new') }}">Ajouter une voiture</a>
                         <a class="collapse-item" href="{{ path('voiture_index') }}">Les voitures</a>
                     </div>
                 </div>
@@ -295,7 +299,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Masmoudi Mohamed Ayman && Maatoug Khalil </span>
                                 <img class="img-profile rounded-circle"
                                     src="{{ asset('img/undraw_profile.svg')}}">
                             </a>

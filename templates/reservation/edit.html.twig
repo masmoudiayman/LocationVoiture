@@ -3,6 +3,22 @@
 {% form_theme form 'bootstrap_5_layout.html.twig' %}
 
 {% block title %}Edit Reservation{% endblock %}
+{% block stylesheets %}
+<style>
+    input ,textarea ,select{
+        width:100%;
+       
+  border-width: 1px;
+  border-radius: 0px;
+  padding-top: 0.5rem;
+  padding-right: 0.75rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+    }
+</style>
+{% endblock %}
 
 {% block body %}
     <h1>Modifier une réservation</h1>
@@ -11,3 +27,5 @@
 
 
 {% endblock %}
+{% block body %}
+
