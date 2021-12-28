@@ -13,11 +13,11 @@
             </tr>
             <tr>
                 <th>Client</th>
-                <td>{{ reservation.getPkClient().nom }}</td>
+                <td>{{ reservation.getPkClient().nom }} {{ reservation.getPkClient().prenom }}</td>
             </tr>
             <tr>
                 <th>Voiture</th>
-                <td>{{ reservation.getPkVoiture().matricule }}</td>
+                <td> {{ reservation.getPkVoiture().nom }} {{ reservation.getPkVoiture().matricule }}</td>
             </tr>
             <tr>
                 <th>Date de début</th>
@@ -28,8 +28,8 @@
                 <td>{{ reservation.dateFin ? reservation.dateFin|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
-                <th>Prix_par_jour</th>
-                <td>{{ reservation.prixParJour }}</td>
+                <th>Prix par jour</th>
+                <td>{{ reservation.prixParJour }} DT</td>
             </tr>
         </tbody>
     </table>

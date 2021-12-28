@@ -36,6 +36,9 @@ class Voiture
     #[ORM\OneToMany(mappedBy: 'pk_voiture', targetEntity: Reservation::class)]
     private $reservations;
 
+    #[ORM\Column(type: 'boolean')]
+    private $Disponibilite;
+
  
 
 
@@ -147,6 +150,18 @@ class Voiture
                 $reservation->setPkVoiture(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDisponibilite(): ?bool
+    {
+        return $this->Disponibilite;
+    }
+
+    public function setDisponibilite(bool $Disponibilite): self
+    {
+        $this->Disponibilite = $Disponibilite;
 
         return $this;
     }

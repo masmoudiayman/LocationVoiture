@@ -27,7 +27,7 @@ class ReservationType extends AbstractType
               ])
         ->add('pk_voiture',EntityType::class,['class'=>Voiture::class,
               "choice_label"=> function(Voiture $voiture) {
-                  return $voiture->getNom().' du marque '. $voiture->getModele().' avec la matricule :'. $voiture->getMatricule();
+                  return $voiture->getNom().' du marque '. $voiture->getModele().' de matricule : '. $voiture->getMatricule();
               },
               'label'=>'Séléctionner Voiture','multiple'=>False
             ]);

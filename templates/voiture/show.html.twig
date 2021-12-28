@@ -4,7 +4,7 @@
 
 {% block body %}
     <h1>Voiture</h1>
-
+<img src="{{ asset('uploads/' ~ voiture.photo) }}"style ="width:250px;height=250px">
     <table class="table">
         <tbody>
             <tr>
@@ -23,13 +23,10 @@
                 <th>Description</th>
                 <td>{{ voiture.description }}</td>
             </tr>
-            <tr>
-                <th>Photo</th>
-                <td> <img src="{{ asset('uploads/' ~ voiture.photo) }}"style ="width:200px;height=200px"></td>
-            </tr>
+            
             <tr>
                 <th>Prix</th>
-                <td>{{ voiture.prix }}</td>
+                <td>{{ voiture.prix }} DT</td>
             </tr>
             <tr>
                 <th>Modele</th>

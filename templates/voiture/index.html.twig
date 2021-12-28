@@ -19,6 +19,7 @@
                 <th>Photo</th>
                 <th>Prix</th>
                 <th>Modéle</th>
+                <th>Disponibilité</th>
                 <th>Les actions</th>
             </tr>
         </thead>
@@ -30,8 +31,15 @@
                 <td>{{ voiture.matricule }}</td>
                 <td>{{ voiture.description }}</td>
                 <td> <img src="{{ asset('uploads/' ~ voiture.photo) }}"style ="width:80px;height=80px"></td>
-                <td>{{ voiture.prix }}</td>
+                <td>{{ voiture.prix }} DT</td>
                 <td>{{ voiture.modele }}</td>
+                <td >
+                {% if voiture.disponibilite == 1 %}
+                    <a href="{{ path('voiture_disponible', {'id': voiture.id}) }}" class="btn btn-success" >Désactiver</a>
+                {% else %}
+                    <a href="{{ path('voiture_indisponible', {'id': voiture.id}) }}" class="btn btn-warning" >Activer</a>
+                {% endif %}
+                </td>
                 <td class="d-flex">
                     <a href="{{ path('voiture_show', {'id': voiture.id}) }}" class="btn btn-primary" ><i class="far fa-eye"></i></i></a>
                     <a href="{{ path('voiture_edit', {'id': voiture.id}) }}" class="btn btn-success"><i class="nav-icon fas fa-edit"></i></a>

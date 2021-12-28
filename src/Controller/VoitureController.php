@@ -120,4 +120,29 @@ class VoitureController extends AbstractController
 
         return $this->redirectToRoute('voiture_index', [], Response::HTTP_SEE_OTHER);
     }
+    #[Route('/{id}', name: 'voiture_disponible' ,methods: ['GET','POST'])]
+    public function disponible(int $id,VoitureRepository $voitureRepository,EntityManagerInterface $entityManager)
+    {
+        $voiture = $voitureRepository->find($id);
+
+        $voiture->setDisponibilite(1);
+        $entityManager->flush();
+
+        return $this->render('voiture/index.html.twig', [
+            'voiture' => $voiture,
+        ]);    }
+
+    #[Route('/{id}', name: 'voiture_indisponible' ,methods: ['GET','POST'])]
+    public function indisponible(int $id,VoitureRepository $voitureRepository,EntityManagerInterface $entityManager)
+    {
+        $voiture = $voitureRepository->find($id);
+
+        $voiture->setDisponibilite(2);
+        $entityManager->flush();
+
+        return $this->render('voiture/index.html.twig', [
+            'voiture' => $voiture,
+        ]);
+    }
+       
 }
